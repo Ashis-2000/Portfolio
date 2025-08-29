@@ -701,7 +701,8 @@
 
     /* CONTACT STYLES */
     #contact {
-      background: #181d23 url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/envelope.svg?sanitize=true) no-repeat right;
+      background: linear-gradient(135deg, #181d23 0%, #252934 50%, #181d23 100%);
+      background-attachment: fixed;
       clip-path: polygon(0 0, 20% 100px, 100% 0, 100% 100%, 0 100%);
       color: #fafafa;
       min-height: 100vh;
@@ -713,45 +714,231 @@
       position: relative;
       margin: -100px 0 140px;
       z-index: 1;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);
+      opacity: 0.3;
+      z-index: -1;
     }
 
     #contact .container {
       width: 70%;
       max-width: 1200px;
       padding: 25vh 0;
+      position: relative;
     }
 
-    #contact .container .heading-wrapper { display: flex; justify-content: space-between; }
-    #contact .heading-wrapper .social a { color: #fafafa; }
-    #contact .heading-wrapper .social a:hover { color: #f300b4; }
-    .heading-wrapper .heading .title { font-size: 3rem; line-height: 2.4rem; }
-    .heading-wrapper .heading .separator { background: #f300b4; width: 150px; height: 2px; margin: 1rem 0; }
-    .heading-wrapper .heading .subtitle { font-size: 1.4rem; }
-    #contact-form { margin-top: 1rem; }
-    input, textarea { border: none; padding: 1rem; font-family: 'Overlock', Arial, Helvetica, sans-serif; width: 100%; height: 40%; transition: 200ms; }
-    input[type="text"], input[type="email"], input[type="text"]:not(output):not(:focus), input[type="email"]:not(output):not(:focus), textarea {
-      border-bottom: 1px solid #fafafa;
-      background: transparent;
+    #contact .container .heading-wrapper { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: flex-start;
+      margin-bottom: 3rem;
+    }
+    
+    .heading-wrapper .heading .title { 
+      font-size: 3.2rem; 
+      line-height: 2.8rem; 
+      background: linear-gradient(45deg, #fafafa, #f300b4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    
+    .heading-wrapper .heading .separator { 
+      background: linear-gradient(45deg, #f300b4, #ff6b9d); 
+      width: 150px; 
+      height: 3px; 
+      margin: 1rem 0; 
+      border-radius: 2px;
+      box-shadow: 0 2px 10px rgba(243, 0, 180, 0.3);
+    }
+    
+    .heading-wrapper .heading .subtitle { 
+      font-size: 1.5rem; 
+      line-height: 1.8;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
+    }
+
+    /* Contact Social Media Links */
+    #contact .contact-social {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #contact .contact-social h4 {
+      font-size: 1.6rem;
       color: #fafafa;
+      margin-right: 1rem;
+      margin-bottom: 0;
+    }
+
+    #contact .contact-social .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    #contact .contact-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: #ffffff;
       font-size: 1.8rem;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact .contact-social a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 600ms;
+    }
+
+    #contact .contact-social a:hover::before {
+      left: 100%;
+    }
+
+    #contact .contact-social a:hover {
+      transform: translateY(-5px) scale(1.1);
+      border-color: #f300b4;
+      box-shadow: 0 20px 40px -15px rgba(243, 0, 180, 0.4);
+    }
+
+    /* Brand specific colors for contact social */
+    #contact .contact-social a.yt:hover { background: #FF0000; border-color: #FF0000; }
+    #contact .contact-social a.ln:hover { background: #0A66C2; border-color: #0A66C2; }
+    #contact .contact-social a.ig:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); border-color: #d6249f; }
+    #contact .contact-social a.fb:hover { background: #1877F2; border-color: #1877F2; }
+    #contact .contact-social a.x:hover { background: #000000; border-color: #000000; }
+
+    #contact-form { 
+      margin-top: 3rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 3rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 25px 50px -20px rgba(0,0,0,0.3);
+    }
+    
+    input, textarea { 
+      border: none; 
+      padding: 1.5rem; 
+      font-family: 'Overlock', Arial, Helvetica, sans-serif; 
+      width: 100%; 
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    input[type="text"], input[type="email"], textarea {
+      color: #fafafa;
+      font-size: 1.6rem;
       box-shadow: none;
       outline: none;
+      backdrop-filter: blur(5px);
     }
-    input[type="text"]:focus, input[type="email"]:focus, input[type="text"]:not(output):focus, input[type="email"]:not(output):focus, textarea:focus {
-      border-bottom: 1px solid #f300b4;
+    
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      border-color: #f300b4;
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 0 20px rgba(243, 0, 180, 0.2);
+      transform: translateY(-2px);
     }
-    input[type="submit"] { background: #f300b4; color: #fafafa; margin-top: 1rem; width: auto; float: right; }
-    input[type="submit"]:hover, input[type="submit"]:focus { cursor: pointer; color: #333; background: #fafafa; }
-    ::placeholder { color: #fafafa; }
+    
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    input[type="submit"] { 
+      background: linear-gradient(45deg, #f300b4, #ff6b9d); 
+      color: #fafafa; 
+      margin-top: 1rem; 
+      width: auto; 
+      float: right;
+      border-radius: 25px;
+      padding: 1rem 2.5rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 25px -10px rgba(243, 0, 180, 0.4);
+      border: none;
+    }
+    
+    input[type="submit"]:hover, input[type="submit"]:focus { 
+      transform: translateY(-3px) scale(1.05);
+      background: linear-gradient(45deg, #ff6b9d, #f300b4);
+      box-shadow: 0 15px 35px -10px rgba(243, 0, 180, 0.6);
+    }
+    
+    ::placeholder { 
+      color: rgba(250, 250, 250, 0.6); 
+    }
+    
     .mail { display: inline-block; font-style: italic; }
     .mail .at, .mail .dot { font-size: .9rem; margin: 0 .1rem; color: #f300b4; }
 
     @media only screen and (max-width: 1149px) {
-      #contact .social a { display: block; }
+      #contact .container { width: 85%; }
+      .heading-wrapper .heading .title { font-size: 2.8rem; }
+      #contact .contact-social { justify-content: center; }
+      #contact .contact-social h4 { text-align: center; width: 100%; margin-bottom: 1rem; }
+      #contact .contact-social .social-links { justify-content: center; }
+    }
+
+    @media only screen and (max-width: 849px) {
+      #contact .container { width: 90%; padding: 20vh 0; }
+      #contact-form { padding: 2rem; margin-top: 2rem; }
+      .heading-wrapper .heading .title { font-size: 2.4rem; line-height: 2.2rem; }
+      .heading-wrapper .heading .subtitle { font-size: 1.4rem; }
+      #contact .contact-social a { width: 45px; height: 45px; font-size: 1.6rem; }
     }
 
     @media only screen and (max-width: 649px) {
-      #contact { clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 0 100%); padding: 0; }
+      #contact { 
+        clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 0 100%); 
+        padding: 3rem 1rem; 
+      }
+      #contact .container { width: 95%; padding: 15vh 0; }
+      .heading-wrapper .heading .title { font-size: 2rem; line-height: 1.8rem; text-align: center; }
+      .heading-wrapper .heading .subtitle { text-align: center; font-size: 1.3rem; }
+      .heading-wrapper .heading .separator { margin: 1rem auto; }
+      #contact-form { padding: 1.5rem; }
+      input[type="submit"] { width: 100%; float: none; margin-top: 1.5rem; }
+      #contact .contact-social { flex-direction: column; gap: 1rem; text-align: center; }
+      #contact .contact-social a { width: 42px; height: 42px; font-size: 1.4rem; }
     }
 
     /* FOOTER STYLES */
@@ -1003,18 +1190,41 @@
           <div className="container">
             <div className="heading-wrapper">
               <div className="heading">
-                <p className="title">Want to <br />contact me?</p>
+                <p className="title">Want to <br />connect with me?</p>
                 <p className="separator" />
                 <p className="subtitle">
-                  Please use the form below to reach out. I will get back to you shortly.
+                  Let's start a conversation! Reach out through the form below or connect with me on social media. I'm always excited to discuss HR opportunities, industry insights, or potential collaborations.
                 </p>
               </div>
             </div>
-            <div id="contact-form" >
-              <input placeholder="Name" name="name" type="text" required />
-              <input placeholder="Email" name="email" type="email" required />
-              <textarea placeholder="Message" type="text" name="message" />
-              <input className="button" id="submit" value="Submit" type="submit" />
+            
+            {/* Social Media Section */}
+            <div className="contact-social">
+              <h4>Follow me on:</h4>
+              <div className="social-links">
+                <a className="yt" href="https://www.youtube.com/@ashisfitness3376" target="_blank" rel="noopener noreferrer" title="YouTube">
+                  <i className="fa-brands fa-youtube" />
+                </a>
+                <a className="ln" href="https://www.linkedin.com/in/ashiskumarsahooo/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                  <i className="fa-brands fa-linkedin" />
+                </a>
+                <a className="ig" href="https://www.instagram.com/fit_ashis/?igsh=czI1dnBiYjJ6Zml6#" target="_blank" rel="noopener noreferrer" title="Instagram">
+                  <i className="fa-brands fa-instagram" />
+                </a>
+                <a className="x" href="https://twitter.com/" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
+                  <i className="fa-brands fa-x-twitter" />
+                </a>
+                <a className="fb" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook">
+                  <i className="fa-brands fa-facebook" />
+                </a>
+              </div>
+            </div>
+
+            <div id="contact-form">
+              <input placeholder="Your Name" name="name" type="text" required />
+              <input placeholder="Your Email Address" name="email" type="email" required />
+              <textarea placeholder="Tell me about your project, questions, or just say hello..." name="message" required />
+              <input className="button" id="submit" value="Send Message" type="submit" />
             </div>
           </div>
         </section>
