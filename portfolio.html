@@ -702,6 +702,290 @@
       box-shadow: 0 15px 30px -20px #25293433;
     }
 
+    /* READ MORE STYLES */
+    #read-more {
+      min-height: 80vh;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      position: relative;
+      z-index: 1;
+      padding: 8rem 0 6rem;
+    }
+
+    #read-more .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5rem;
+    }
+
+    #read-more .heading .title { 
+      text-align: center; 
+      font-size: 2.4rem; 
+      line-height: 2.4rem; 
+      color: #252934;
+      margin-bottom: 1rem;
+    }
+
+    #read-more .heading .separator { 
+      background: linear-gradient(45deg, #f300b4, #ff6b9d); 
+      width: 150px; 
+      height: 2px; 
+      margin: 1rem auto; 
+      border-radius: 1px;
+    }
+
+    #read-more .heading .subtitle {
+      font-size: 1.4rem;
+      text-align: center;
+      color: #666;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #read-more .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 3rem;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #read-more .activity-card {
+      background: linear-gradient(145deg, #ffffff 0%, #fafbfc 100%);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 
+        0 15px 30px -12px rgba(37, 41, 52, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.8);
+      transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid rgba(243, 0, 180, 0.08);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      height: fit-content;
+    }
+
+    #read-more .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #f300b4, #ff6b9d, #8b5cf6, #06b6d4);
+      background-size: 400% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+      opacity: 0;
+      transition: opacity 300ms;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    #read-more .activity-card::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(243, 0, 180, 0.1) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border-radius: 50%;
+    }
+
+    #read-more .activity-card:hover::before {
+      opacity: 1;
+    }
+
+    #read-more .activity-card:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    #read-more .activity-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 
+        0 30px 60px -20px rgba(37, 41, 52, 0.25),
+        0 0 0 1px rgba(243, 0, 180, 0.2),
+        0 0 50px rgba(243, 0, 180, 0.1);
+      border-color: rgba(243, 0, 180, 0.3);
+    }
+
+    #read-more .activity-card .card-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #f300b4 0%, #ff6b9d 50%, #8b5cf6 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: white;
+      font-size: 1.4rem;
+      position: relative;
+      box-shadow: 
+        0 8px 20px -6px rgba(243, 0, 180, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    #read-more .activity-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 
+        0 15px 35px -10px rgba(243, 0, 180, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    #read-more .activity-card .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #252934;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    #read-more .activity-card .card-meta {
+      font-size: 1.1rem;
+      color: #f300b4;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    #read-more .activity-card .card-description {
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    #read-more .activity-card .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #read-more .activity-card .tag {
+      background: rgba(243, 0, 180, 0.1);
+      color: #f300b4;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    #read-more .activity-card .read-more-btn {
+      background: linear-gradient(135deg, transparent, transparent);
+      border: 2px solid;
+      border-image: linear-gradient(135deg, #f300b4, #ff6b9d) 1;
+      color: #f300b4;
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    #read-more .activity-card .read-more-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #f300b4, #ff6b9d);
+      transition: all 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: -1;
+    }
+
+    #read-more .activity-card .read-more-btn:hover::before {
+      left: 0;
+    }
+
+    #read-more .activity-card .read-more-btn:hover {
+      color: white;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 12px 25px -8px rgba(243, 0, 180, 0.4),
+        0 0 20px rgba(243, 0, 180, 0.2);
+      border-image: none;
+      border-color: transparent;
+    }
+
+    /* Responsive Design for Read More */
+    @media only screen and (max-width: 1200px) {
+      #read-more .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 800px;
+      }
+    }
+
+    @media only screen and (max-width: 849px) {
+      #read-more .container {
+        padding: 0 3rem;
+      }
+      #read-more .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 700px;
+      }
+      #read-more .activity-card {
+        padding: 1.5rem;
+      }
+      #read-more .activity-card .card-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+
+    @media only screen and (max-width: 649px) {
+      #read-more {
+        padding: 6rem 0 4rem;
+      }
+      #read-more .container {
+        padding: 0 2rem;
+      }
+      #read-more .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 100%;
+      }
+      #read-more .activity-card {
+        padding: 2rem 1.5rem;
+      }
+      #read-more .activity-card .card-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+      }
+      #read-more .activity-card .card-title {
+        font-size: 1.6rem;
+      }
+      #read-more .activity-card .read-more-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+      }
+    }
+
     /* CONTACT STYLES */
     #contact {
       background: linear-gradient(135deg, #181d23 0%, #252934 50%, #181d23 100%);
@@ -843,7 +1127,7 @@
 
     /* Ensure equal-height cards and aligned buttons in Read More grid */
     #read-more .activities-grid { align-items: stretch; }
-    #read-more .activity-card { display: flex; flex-direction: column; }
+    #read-more .activity-card { display: flex; flex-direction: column; height: 100%; }
     #read-more .activity-card .card-description { flex-grow: 1; }
     #read-more .activity-card .read-more-btn { margin-top: auto; align-self: flex-start; }
 
@@ -993,6 +1277,7 @@
               <li><a href="#about" onClick={props.toggleMenu}>ABOUT</a></li>
               <li><a href="#projects" onClick={props.toggleMenu}>EXPERIENCE</a></li>
               <li><a href="#education" onClick={props.toggleMenu}>EDUCATION</a></li>
+              <li><a href="#read-more" onClick={props.toggleMenu}>READ MORE</a></li>
               <li><a href="#contact" onClick={props.toggleMenu}>CONTACT</a></li>
             </ul>
           </div>
@@ -1207,6 +1492,77 @@
       );
     };
 
+    const ReadMore = props => {
+      return (
+        <section id="read-more">
+          <div className="container">
+            <div className="heading">
+              <h3 className="title">Read More</h3>
+              <p className="separator" />
+              <p className="subtitle">
+                Explore my speaking engagements, thought leadership articles, and professional activities in the HR and talent management space.
+              </p>
+            </div>
+            
+            <div className="activities-grid">
+              <div className="activity-card">
+                <div className="card-icon">
+                  <i className="fas fa-microphone-alt" />
+                </div>
+                <h4 className="card-title">Guest Speaker at HR Summit 2024</h4>
+                <p className="card-meta">Delhi • March 2024</p>
+                <p className="card-description">
+                  Delivered a keynote on "Future of Talent Acquisition in EV Industry" sharing insights on recruiting strategies for emerging technologies.
+                </p>
+                <div className="card-tags">
+                  <span className="tag">Talent Acquisition</span>
+                  <span className="tag">EV Industry</span>
+                  <span className="tag">Keynote</span>
+                </div>
+                <a href="#" className="read-more-btn">Read More</a>
+              </div>
+
+              <div className="activity-card">
+                <div className="card-icon">
+                  <i className="fas fa-graduation-cap" />
+                </div>
+                <h4 className="card-title">Workshop on Modern Recruitment Techniques</h4>
+                <p className="card-meta">Noida • February 2024</p>
+                <p className="card-description">
+                  Conducted a workshop for HR professionals on leveraging digital platforms and AI tools for effective recruitment and employer branding.
+                </p>
+                <div className="card-tags">
+                  <span className="tag">Workshop</span>
+                  <span className="tag">Digital Recruitment</span>
+                  <span className="tag">Training</span>
+                </div>
+                <a href="#" className="read-more-btn">Read More</a>
+              </div>
+
+              <div className="activity-card">
+                <div className="card-icon">
+                  <i className="fas fa-users" />
+                </div>
+                <h4 className="card-title">Panel Discussion: Employee Engagement in Remote Work</h4>
+                <p className="card-meta">Virtual Event • January 2024</p>
+                <p className="card-description">
+                  Participated as a panelist discussing employee engagement strategies and building strong remote teams in hybrid work environments.
+                </p>
+                <div className="card-tags">
+                  <span className="tag">Panel Discussion</span>
+                  <span className="tag">Remote Work</span>
+                  <span className="tag">Employee Engagement</span>
+                </div>
+                <a href="#" className="read-more-btn">Read More</a>
+              </div>
+
+
+            </div>
+          </div>
+        </section>
+      );
+    };
+
     const Contact = props => {
       return (
         <section id="contact">
@@ -1302,6 +1658,7 @@
             <About />
             <Projects />
             <Education />
+            <ReadMore />
             <Contact />
             <Footer />
           </React.Fragment>
